@@ -5,6 +5,8 @@ import { MainContentComponent } from './components/main-content/main-content.com
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatToolbarModule } from '@angular/material/toolbar'
+import { MatSlideToggleModule } from '@angular/material/slide-toggle'
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,6 +19,8 @@ import { MatToolbarModule } from '@angular/material/toolbar'
     CommonModule,
     MatSidenavModule,
     MatToolbarModule,
+    MatSlideToggleModule,
+    FormsModule,
 
   ],
   exports: [

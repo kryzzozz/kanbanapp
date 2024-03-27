@@ -1,0 +1,39 @@
+.dark-mode {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color:#f5f5f5;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.contenedor {
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+}
+
+.background {
+    background-color: gray;
+}
+
+.list-section {
+    flex: 1 0;
+    overflow: auto;
+}
+
+.bottom-section {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 content;
+    padding: 10px;
+}
+
+.hide-sidebar {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: space-evenly;
+}

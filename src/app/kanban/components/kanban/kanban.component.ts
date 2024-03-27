@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./kanban.component.scss']
 })
 export class KanbanComponent {
+  isDarkTheme: boolean = false;
+
+  getThemeMode(isDarkTheme: boolean) {
+    this.isDarkTheme = isDarkTheme;
+  }
 
 }

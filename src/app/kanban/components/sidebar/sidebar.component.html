@@ -1,3 +1,33 @@
+<div class="contenedor">
 <mat-toolbar>
   <span>kanban</span>
 </mat-toolbar>
+
+<div class="list-section">
+    <ul>
+        <li>un elemento</li>
+        <li>dos elementos</li>
+        <li>tres elementos</li>
+    </ul>
+</div>
+
+<div class="bottom-section " >
+    <div class="dark-mode" [ngClass]="{'background': isDarkTheme}">
+        <span class="material-icons">
+            light_mode
+        </span>
+        <mat-slide-toggle [(ngModel)]="isDarkTheme" (change)="sendThemeDarkMode()">
+        </mat-slide-toggle>
+        <span class="material-icons">
+            dark_mode
+        </span>
+    </div>
+
+    <div class="hide-sidebar">
+        <span class="material-icons">
+            visibility_off
+        </span>
+        Hide Sidebar
+    </div>
+</div>
+</div>
