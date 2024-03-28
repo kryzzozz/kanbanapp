@@ -1,3 +1,18 @@
 <mat-toolbar>
     <span>Platform Launch</span>
+    <span class="spacer"></span>
+    <button mat-flat-button color="primary" class="button-task">+Add New Task</button>
 </mat-toolbar>
+
+<div class="board">
+    <app-column-content 
+        *ngFor="let column of columns" 
+        [columnContent]="column"
+    >
+    </app-column-content>
+    <div class="columns">
+        <div class="new-column">
+            <h1>+ New column</h1>
+        </div>
+    </div>
+</div>

@@ -1,33 +1,36 @@
 <div class="contenedor">
-<mat-toolbar>
-  <span>kanban</span>
-</mat-toolbar>
+    <mat-toolbar>
+        <span class="material-icons">equalizer</span>
+        <span>kanban</span>
+    </mat-toolbar>
 
-<div class="list-section">
-    <ul>
-        <li>un elemento</li>
-        <li>dos elementos</li>
-        <li>tres elementos</li>
-    </ul>
-</div>
-
-<div class="bottom-section " >
-    <div class="dark-mode" [ngClass]="{'background': isDarkTheme}">
-        <span class="material-icons">
-            light_mode
-        </span>
-        <mat-slide-toggle [(ngModel)]="isDarkTheme" (change)="sendThemeDarkMode()">
-        </mat-slide-toggle>
-        <span class="material-icons">
-            dark_mode
-        </span>
+    <div class="list-section">
+        <span class="list-title">ALL BOARDS (3)</span>
+        <mat-action-list>
+            <button mat-list-item >Platform Launch</button>
+            <button mat-list-item >Marketing Plan</button>
+            <button mat-list-item >Roadmap</button>
+        </mat-action-list>
     </div>
 
-    <div class="hide-sidebar">
-        <span class="material-icons">
-            visibility_off
-        </span>
-        Hide Sidebar
+    <div class="bottom-section">
+        <div class="dark-mode" [ngClass]="{'background': isDarkTheme}">
+            <span class="material-icons">
+                light_mode
+            </span>
+            <mat-slide-toggle [(ngModel)]="isDarkTheme" (change)="sendThemeDarkMode()">
+            </mat-slide-toggle>
+            <span class="material-icons">
+                dark_mode
+            </span>
+        </div>
+
+        <div class="hide-sidebar">
+            <span class="material-icons">
+                visibility_off
+            </span>
+            Hide Sidebar
+        </div>
     </div>
-</div>
+
 </div>

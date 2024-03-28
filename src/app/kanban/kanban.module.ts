@@ -6,7 +6,12 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'
+import { MatCardModule } from '@angular/material/card'
+import { MatButtonModule } from '@angular/material/button'
+import { MatListModule } from '@angular/material/list';
 import { FormsModule } from '@angular/forms';
+import { ColumnContentComponent } from './components/column-content/column-content.component';
+import { CardContentComponent } from './components/card-content/card-content.component';
 
 
 @NgModule({
@@ -14,6 +19,8 @@ import { FormsModule } from '@angular/forms';
     KanbanComponent,
     MainContentComponent,
     SidebarComponent,
+    ColumnContentComponent,
+    CardContentComponent,
   ],
   imports: [
     CommonModule,
@@ -21,6 +28,10 @@ import { FormsModule } from '@angular/forms';
     MatToolbarModule,
     MatSlideToggleModule,
     FormsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatListModule,
+    
 
   ],
   exports: [

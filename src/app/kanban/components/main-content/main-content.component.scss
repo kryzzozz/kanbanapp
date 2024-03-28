@@ -1,0 +1,33 @@
+.board {
+    display: flex;
+    flex-direction: row;
+    //gap: 20px;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.button-task {
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.column-title {
+    display: flex;
+}
+
+.column-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.new-column {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    margin-left: 20px;
+}

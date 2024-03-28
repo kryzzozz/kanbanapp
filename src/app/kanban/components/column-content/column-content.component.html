@@ -1,0 +1,13 @@
+<div class="columns">
+    <div class="column-title">
+        <span class="material-icons">fiber_manual_record</span>
+        <h3>{{ columnContent.title }} ({{ columnContent.tasks.length }})</h3>
+    </div>
+    <div class="column-content">
+        <app-card-content 
+            *ngFor="let task of columnContent.tasks" 
+            [task]="task"
+        >
+        </app-card-content>
+    </div>
+</div>
