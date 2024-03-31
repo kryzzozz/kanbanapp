@@ -1,0 +1,26 @@
+.button-remove-task {
+    border-radius: 20px;
+    font-weight: 500;
+    max-width: 50px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.subtasks {
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.button-new-subtask {
+    width: 100%;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.input-height {
+    height: 56px;
+}

@@ -1,6 +1,6 @@
-<mat-card class="card-content">
+<mat-card (click)="sendCardId(task!.id)" class="card-content">
     <mat-card-header>
-        <mat-card-title>{{task.title}}</mat-card-title>
+        <mat-card-title>{{task?.title}}</mat-card-title>
     </mat-card-header>
-    <mat-card-content>{{ getCompletedSubtasksCount(task.subTasks) }} of {{ task.subTasks.length }} subtasks</mat-card-content>
+    <mat-card-content>{{ getCompletedSubtasksCount(task?.subTasks ?? []) }} of {{ task?.subTasks?.length ?? 0 }} subtasks</mat-card-content>
 </mat-card>

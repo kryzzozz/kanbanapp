@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ColumnInterface } from '../../types/kanban.interface';
 
 @Component({
   selector: 'app-column-content',
@@ -6,8 +7,13 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./column-content.component.scss']
 })
 export class ColumnContentComponent {
-  @Input() columnContent: any;
+  @Input() columnContent?: ColumnInterface;
+  @Output() cardId = new EventEmitter<number>();
 
   constructor() {}
+
+  sendCardId(cardId: number) {
+    this.cardId.emit(cardId);
+  }
 
 }
