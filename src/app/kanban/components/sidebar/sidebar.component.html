@@ -7,7 +7,7 @@
     <div class="list-section">
         <span class="list-title">ALL BOARDS (3)</span>
         <mat-action-list>
-            <button mat-list-item >Platform Launch</button>
+            <button mat-list-item >Platform Launch</button> 
             <button mat-list-item >Marketing Plan</button>
             <button mat-list-item >Roadmap</button>
         </mat-action-list>
@@ -26,10 +26,13 @@
         </div>
 
         <div class="hide-sidebar">
-            <span class="material-icons">
-                visibility_off
-            </span>
-            Hide Sidebar
+            <button mat-button (click)="hideDrawer()">
+                <span class="material-icons" style="margin-right: 15px;">
+                    visibility_off
+                </span>
+                Hide Sidebar
+            </button>
+            
         </div>
     </div>
 

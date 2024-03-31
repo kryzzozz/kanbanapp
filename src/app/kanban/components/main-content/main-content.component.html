@@ -1,13 +1,25 @@
 <mat-toolbar>
+    <button mat-button [ngClass]="{'visible': !(displayVisibilityIcon$ | async)}" (click)="displayDrawer()" >
+        <span class="material-icons">
+            visibility
+        </span>
+    </button>
     <span>Platform Launch</span>
     <span class="spacer"></span>
-    <button mat-flat-button color="primary" class="button-task">+Add New Task</button>
+    <button 
+        mat-flat-button 
+        color="primary" 
+        class="button-task"
+        (click)="addNewTask()"
+    >+Add New Task
+    </button>
 </mat-toolbar>
 
-<div class="board">
+<div class="board" *ngIf="this.kanbanBoards$ | async">
     <app-column-content 
         *ngFor="let column of columns" 
         [columnContent]="column"
+        (cardId)="openTask($event)"
     >
     </app-column-content>
     <div class="columns">

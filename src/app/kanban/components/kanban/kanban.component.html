@@ -1,10 +1,10 @@
 <mat-drawer-container class="kanban-container mat-app-background" [ngClass]="{'theme-dark': isDarkTheme}">
-    <mat-drawer class="mat-drawer-width" mode="side" opened>
-        <app-sidebar (themeDarkMode)="getThemeMode($event)"></app-sidebar>
+    <mat-drawer [(opened)]="drawer_opened" class="mat-drawer-width" mode="side" opened>
+        <app-sidebar (themeDarkMode)="getThemeMode($event)" (hiddenDrawer)="hideSidebar($event)"></app-sidebar>
     </mat-drawer>
 
     <mat-drawer-content>
-        <app-main-content></app-main-content>
+        <app-main-content (displayedDrawer)="displaySidebar($event)"></app-main-content>
     </mat-drawer-content>
     
 </mat-drawer-container>

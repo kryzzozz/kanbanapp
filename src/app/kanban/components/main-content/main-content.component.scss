@@ -1,7 +1,6 @@
 .board {
     display: flex;
     flex-direction: row;
-    //gap: 20px;
     justify-content: flex-start;
     height: 100%;
 }
@@ -30,4 +29,8 @@
     align-items: center;
     height: 100vh;
     margin-left: 20px;
+}
+
+.visible {
+    display: none;
 }

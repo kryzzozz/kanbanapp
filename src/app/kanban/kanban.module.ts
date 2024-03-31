@@ -9,9 +9,20 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 import { MatCardModule } from '@angular/material/card'
 import { MatButtonModule } from '@angular/material/button'
 import { MatListModule } from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { TextFieldModule } from '@angular/cdk/text-field';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ColumnContentComponent } from './components/column-content/column-content.component';
 import { CardContentComponent } from './components/card-content/card-content.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './store/reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { KanbanEffects } from './store/effects';
+import { AddTaskComponent } from './components/add-task/add-task.component';
 
 
 @NgModule({
@@ -21,6 +32,7 @@ import { CardContentComponent } from './components/card-content/card-content.com
     SidebarComponent,
     ColumnContentComponent,
     CardContentComponent,
+    AddTaskComponent,
   ],
   imports: [
     CommonModule,
@@ -31,6 +43,14 @@ import { CardContentComponent } from './components/card-content/card-content.com
     MatCardModule,
     MatButtonModule,
     MatListModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    TextFieldModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    StoreModule.forFeature('kanban', reducers),
+    EffectsModule.forFeature([KanbanEffects]),
     
 
   ],

@@ -33,11 +33,11 @@ $my-theme-dark: mat.define-dark-theme((
 ));
 
 .theme-dark {
-    @include mat.all-component-colors($my-theme-dark)
+    @include mat.all-component-colors($my-theme-dark);
 }
 
 .theme-light {
-    @include mat.all-component-colors($my-theme)
+    @include mat.all-component-colors($my-theme);
 }
 
 html, body { height: 100%; }
