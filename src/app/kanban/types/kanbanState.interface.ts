@@ -6,4 +6,5 @@ export interface KanbanStateInterface {
     error: string | null;
     displayVisibilityIcon: boolean;
     darkTheme: boolean;
+    selectedBoardId: number;
 }

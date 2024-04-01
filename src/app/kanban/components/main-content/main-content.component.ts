@@ -4,7 +4,7 @@ import { Observable, Subscription, of } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { AppStateInterface } from 'src/app/types/appState.interface';
 import * as KanbanActions from '../../store/actions';
-import { displayVisibilityIconSelector, errorSelector, isDarkThemeSelector, isLoadingSelector, kanbanSelector } from '../../store/selectors';
+import { displayVisibilityIconSelector, errorSelector, isDarkThemeSelector, isLoadingSelector, kanbanSelector, selectedBoardId } from '../../store/selectors';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTaskComponent } from '../add-task/add-task.component';
 import { UpdateTaskComponent } from '../update-task/update-task.component';
@@ -19,6 +19,7 @@ export class MainContentComponent implements OnInit {
 
   isLoading$: Observable<boolean>;
   error$: Observable<string | null>;
+  selectedBoardId$: Observable<number>;
   kanbanBoards$: Observable<KanbanBoardInterface>;
   displayVisibilityIcon$: Observable<boolean>;
   isDarkTheme$: Observable<boolean>;
@@ -34,10 +35,23 @@ export class MainContentComponent implements OnInit {
   ) {
     this.isLoading$ = this.store.pipe(select(isLoadingSelector));
     this.error$ = this.store.pipe(select(errorSelector));
+    this.selectedBoardId$ = this.store.pipe(select(selectedBoardId));
     this.kanbanBoards$ = this.store.pipe(select(kanbanSelector));
     this.displayVisibilityIcon$ = this.store.pipe(select(displayVisibilityIconSelector));
     this.isDarkTheme$ = this.store.pipe(select(isDarkThemeSelector));
     
+    // if(this.selectedBoardId$) {
+    //   this.selectedBoardId$.subscribe((selectedBoardId) => {
+    //     if(this.kanbanBoards$)
+    //       this.kanbanSubcription = this.kanbanBoards$.subscribe((kanbanBoards) => {
+    //         if(kanbanBoards.boards[selectedBoardId] && kanbanBoards.boards[selectedBoardId].columns.length > 0) {
+    //           this.tasks = kanbanBoards.boards[selectedBoardId].tasks;
+    //           this.columns = kanbanBoards.boards[selectedBoardId].columns;
+    //         }
+    //   });
+    //   })
+    // }
+
     if(this.kanbanBoards$)
       this.kanbanSubcription = this.kanbanBoards$.subscribe((kanbanBoards) => {
         if(kanbanBoards.boards[0] && kanbanBoards.boards[0].columns.length > 0) {

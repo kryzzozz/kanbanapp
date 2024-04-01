@@ -15,6 +15,10 @@ export const setDarkTheme = createAction(
     '[Kanban] Set Theme Color',
     props<{ darkTheme: boolean }>()
 );
+export const setSelectedBoardId = createAction(
+    '[Kanban] Set Selected Board',
+    props<{ selectedBoardId: number }>()
+);
 export const addTaskAction = createAction(
     '[Kanban] Add Task Action', 
     props<{ payload: TaskInterface }>()

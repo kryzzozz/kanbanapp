@@ -4,31 +4,18 @@
         <span>kanban</span>
     </mat-toolbar>
 
-    <div class="list-section">
-        <span class="list-title">ALL BOARDS (3)</span>
-        <mat-action-list>
-            <button mat-list-item class="list-element active-white" [ngClass]="{'active-dark': isDarkTheme}" >
+    <div class="list-section" *ngIf="boardsInfo$ | async">
+        <span class="list-title">ALL BOARDS ({{ totalBoards }})</span>
+        <mat-action-list *ngFor="let board of boardsInfo$ | async" >
+            <button 
+                mat-list-item 
+                class="list-element {{ !isDarkTheme && board.id === boardSelected ? 'active-white' : ''}}" 
+                [ngClass]="{'active-dark': isDarkTheme && board.id === boardSelected}"
+                (click)="changeBoard(board.id)"
+            >
                 <div class="inner-list">
                     <span class="material-icons">list_alt</span>
-                    <p class="center-list-item">Platform Launch</p>
-                </div>
-            </button>
-            <button mat-list-item class="list-element">
-                <div class="inner-list">
-                    <span class="material-icons">list_alt</span>
-                    <p class="center-list-item">Marketing Plan</p>
-                </div>
-            </button>
-            <button mat-list-item class="list-element">
-                <div class="inner-list">
-                    <span class="material-icons">list_alt</span>
-                    <p class="center-list-item">Roadmap</p>
-                </div>
-            </button>
-            <button mat-list-item class="list-element">
-                <div class="inner-list">
-                    <span class="material-icons">list_alt</span>
-                    <p class="center-list-item">+ Create New Board</p>
+                    <p class="center-list-item">{{ board.name }}</p>
                 </div>
             </button>
         </mat-action-list>
@@ -56,5 +43,8 @@
             
         </div>
     </div>
+
+
+    
 
 </div>

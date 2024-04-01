@@ -3,7 +3,7 @@ import { ColumnInterface, KanbanBoardInterface, TaskInterface } from '../../type
 import { Observable, Subscription } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { AppStateInterface } from 'src/app/types/appState.interface';
-import { kanbanSelector } from '../../store/selectors';
+import { kanbanSelector, selectedBoardId } from '../../store/selectors';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
@@ -16,6 +16,7 @@ export class ColumnContentComponent implements OnInit {
   @Output() cardId = new EventEmitter<number>();
 
   kanbanBoards$: Observable<KanbanBoardInterface>;
+  selectedBoardId$: Observable<number>;
   kanbanSubcription: Subscription = new Subscription();
   columns: ColumnInterface[] = [];
   tasks: TaskInterface[] = [];
@@ -23,10 +24,24 @@ export class ColumnContentComponent implements OnInit {
   constructor(
     private store: Store<AppStateInterface>,
   ) {
+    this.selectedBoardId$ = this.store.pipe(select(selectedBoardId));
     this.kanbanBoards$ = this.store.pipe(select(kanbanSelector));
   }
 
   ngOnInit(): void {
+
+    // if(this.selectedBoardId$) {
+    //   this.selectedBoardId$.subscribe((selectedBoardId) => {
+    //     if(this.kanbanBoards$)
+    //       this.kanbanSubcription = this.kanbanBoards$.subscribe((kanbanBoards) => {
+    //         if(kanbanBoards.boards[selectedBoardId] && kanbanBoards.boards[selectedBoardId].columns.length > 0) {
+    //           this.tasks = kanbanBoards.boards[selectedBoardId].tasks.filter((task) => task.status === this.columnContent?.id);
+    //         }
+    //       });
+
+    //   })
+    // };
+
     if(this.kanbanBoards$)
       this.kanbanSubcription = this.kanbanBoards$.subscribe((kanbanBoards) => {
         if(kanbanBoards.boards[0] && kanbanBoards.boards[0].columns.length > 0) {

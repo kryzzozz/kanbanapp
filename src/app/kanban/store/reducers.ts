@@ -8,6 +8,7 @@ export const initialState: KanbanStateInterface = {
     error: null,
     displayVisibilityIcon: false,
     darkTheme: false,
+    selectedBoardId: 1,
 };
 
 export const reducers = createReducer(
@@ -24,6 +25,7 @@ export const reducers = createReducer(
         error: action.error,
     })),
     on(KanbanActions.displayVisibilityIcon, (state) => ({ ...state, displayVisibilityIcon: !state.displayVisibilityIcon })),
+    on(KanbanActions.setSelectedBoardId, (state, action) => ({ ...state, selectedBoardId: action.selectedBoardId })),
     on(KanbanActions.setDarkTheme, (state, action) => ({
         ...state,
         darkTheme: action.darkTheme,
