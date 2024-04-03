@@ -3,15 +3,24 @@
         <span class="material-icons" [appIconColor]=columnContent?.iconColor!>fiber_manual_record</span>
         <h3 class="title-spacing">{{ columnContent?.title }} ({{ tasks.length }})</h3>
     </div>
-    <div cdkDropListGroup>
-        <div cdkDropList [cdkDropListData]="tasks" (cdkDropListDropped)="drop($event)" class="column-content" *ngIf="this.kanbanBoards$ | async">
-            <app-card-content 
-                *ngFor="let task of tasks" 
-                [task]="task"
-                (cardId)="sendCardId($event)"
-                cdkDrag
-            >
-            </app-card-content>
+    <div *ngIf="this.kanbanBoards$ | async">
+        <div 
+            cdkDropList
+            #{{columnContent?.title}}="cdkDropList"
+            id="{{columnContent?.title}}"
+            [cdkDropListData]="tasks"
+            (cdkDropListDropped)="drop($event)"
+            class="column-content"
+            [cdkDropListConnectedTo]="columTitles"
+        >
+            <div *ngFor="let task of tasks" >
+                <app-card-content 
+                    [task]="task"
+                    (cardId)="sendCardId($event)"
+                    cdkDrag
+                >
+                </app-card-content>
+            </div>
         </div>
     </div>
 </div>
