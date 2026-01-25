@@ -2,7 +2,7 @@
 
 A Kanban-style task management application built with **Angular 21** and **Modern Web Standards**. This project demonstrates a scalable, reactive, and performance-oriented architecture using the latest features of the Angular ecosystem.
 
-![Kanban Preview](https://via.placeholder.com/800x400?text=Kanban+App+Preview) ## 🌟 Key Features
+![Kanban Preview](./screenshots/preview.png) ## 🌟 Key Features
 
 * **Reactive State Management:** Implemented with **NgRx Signals (SignalStore)** for predictable, immutable state management free of excessive boilerplate.
 * **Fluid Drag & Drop:** Integration with `@angular/cdk/drag-drop` for reordering tasks between columns with state persistence.
