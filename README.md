@@ -1,59 +1,51 @@
-# KanbanPro
+# Kanban Task Management App 🚀
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.1.
+A Kanban-style task management application built with **Angular 21** and **Modern Web Standards**. This project demonstrates a scalable, reactive, and performance-oriented architecture using the latest features of the Angular ecosystem.
 
-## Development server
+![Kanban Preview](https://via.placeholder.com/800x400?text=Kanban+App+Preview) ## 🌟 Key Features
 
-To start a local development server, run:
+* **Reactive State Management:** Implemented with **NgRx Signals (SignalStore)** for predictable, immutable state management free of excessive boilerplate.
+* **Fluid Drag & Drop:** Integration with `@angular/cdk/drag-drop` for reordering tasks between columns with state persistence.
+* **Subtask Management:** Capability to create, view, and mark subtasks as completed with immediate visual updates.
+* **Dynamic Theming:** Light/Dark Mode system based on **CSS Variables** and automatic system preference detection.
+* **Data Persistence:** Automatic synchronization with `localStorage` using Angular `effects`.
+* **Clean Architecture:** Strict separation between presentation (Dumb) components and logical containers (Smart/Pages).
+
+## 🛠️ Tech Stack & Technical Decisions
+
+The project was designed with long-term maintainability and scalability in mind.
+
+| Technology | Decision / Rationale |
+| :--- | :--- |
+| **Angular 21+** | Utilization of **Standalone Components**, **Signals** for granular reactivity, and **Control Flow** (`@if`, `@for`) for cleaner templates. |
+| **NgRx Signals** | Chosen over classic NgRx (Redux) for its simplicity, reduced boilerplate, and seamless integration with Angular Signals. |
+| **Jest** | Unit testing framework configured to replace Karma, offering faster execution (JSDOM) and a superior developer experience. |
+| **TypeScript** | Strict typing (`strict: true`) enabled to ensure code robustness and type safety. |
+| **SCSS / CSS Vars** | Modular style architecture. Native CSS variables used for real-time theme switching without expensive repaints. |
+
+## 🚀 Getting Started
+
+### Prerequisites
+* Node.js (v20 or higher recommended)
+* NPM
+
+### Installation
+
+1.  Clone the repository:
+    ```bash
+    git clone [https://github.com/your-username/kanban-pro.git](https://github.com/your-username/kanban-pro.git)
+    ```
+2.  Install dependencies:
+    ```bash
+    cd kanban-pro
+    npm install
+    ```
+
+### Development Server
+
+Run the development server to view the app in action:
 
 ```bash
+npm start
+# Or alternatively:
 ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

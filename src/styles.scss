@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+/* src/styles.scss */
+:root {
+  --sidebar-width: 300px;
+  --sidebar-padding-x: 32px;
+  --header-height: 96px;
+  --primary-color: #635fc7;
+  --primary-hover: #a8a4ff;
+  --dark-bg: #2b2c37;
+  --very-dark-bg: #20212c;
+  --medium-grey: #828fa3;
+  --lines-dark: #3e3f4e;
+  --red: #ea5555;
+  
+  --color-todo: #49c4e5;
+  --color-doing: #8471f2;
+  --color-done: #67e2ae;
+
+  --text-main: #ffffff;
+}
+
+.light-theme {
+  --dark-bg: #ffffff;
+  --very-dark-bg: #f4f7fd;
+  --lines-dark: #e4ebfa;
+  --text-main: #000112;
+}
+
+body {
+  background-color: var(--very-dark-bg);
+  color: var(--text-main);
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  margin: 0;
+  height: 100vh;
+}

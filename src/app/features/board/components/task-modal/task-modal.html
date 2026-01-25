@@ -1,0 +1,45 @@
+<div class="modal-overlay" (click)="store.closeTaskModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+
+        <h2 class="modal-title">Add New Task</h2>
+
+        <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" formControlName="title" placeholder="e.g. Take coffee break">
+            </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                <textarea formControlName="description"
+                    placeholder="e.g. It's always good to take a break..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Subtasks</label>
+                <div formArrayName="subtasks">
+                    @for (control of subtasks.controls; track $index) {
+                    <div class="subtask-row">
+                        <input [formControlName]="$index" placeholder="e.g. Make coffee">
+                        <button type="button" class="remove-btn" (click)="removeSubtask($index)">✕</button>
+                    </div>
+                    }
+                </div>
+                <button type="button" class="secondary-btn" (click)="addSubtask()">+ Add New Subtask</button>
+            </div>
+
+            <div class="form-group">
+                <label>Status</label>
+                <select formControlName="status">
+                    @for (col of store.currentBoard()?.columns; track col.name) {
+                    <option [value]="col.name">{{ col.name }}</option>
+                    }
+                </select>
+            </div>
+
+            <button type="submit" class="primary-btn" [disabled]="taskForm.invalid">Create Task</button>
+
+        </form>
+    </div>
+</div>

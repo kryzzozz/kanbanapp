@@ -1,0 +1,47 @@
+<aside class="sidebar">
+    <div class="boards-list">
+        <h3 class="list-title">ALL BOARDS ({{ store.boards().length }})</h3>
+
+        @for (board of store.boards(); track board.id) {
+        <div class="board-item" [class.active]="store.currentBoardId() === board.id"
+            (click)="store.selectBoard(board.id)">
+
+            <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M0 2.889A2.889 2.889 0 0 1 2.889 0H13.11A2.889 2.889 0 0 1 16 2.889V13.11A2.888 2.888 0 0 1 13.111 16H2.89A2.889 2.889 0 0 1 0 13.111V2.89Zm1.333 5.555v4.667c0 .859.697 1.556 1.556 1.556h6.889V8.444H1.333Zm8.445-1.333V1.333h-6.89A1.556 1.556 0 0 0 1.333 2.89v4.222h8.445Zm1.333 0v4.222h3.556V7.111h-3.556Zm0-1.333h3.556V2.89a1.555 1.555 0 0 0-1.556-1.556h-2V5.778Zm0 5.555h3.556v1.778a1.556 1.556 0 0 1-1.556 1.556h-2v-3.334Z"
+                    fill="currentColor" />
+            </svg>
+
+            {{ board.name }}
+        </div>
+        }
+
+        <div class="board-item create-board">
+            <span class="icon">+</span> Create New Board
+        </div>
+    </div>
+
+    <div class="theme-wrapper">
+        <div class="theme-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="theme-icon">
+                <circle cx="12" cy="12" r="5" />
+                <path
+                    d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+            </svg>
+
+            <label class="switch">
+                <input type="checkbox" [checked]="themeService.theme() === 'dark'"
+                    (change)="themeService.toggleTheme()">
+                <span class="slider round"></span>
+            </label>
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="theme-icon">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+        </div>
+    </div>
+</aside>

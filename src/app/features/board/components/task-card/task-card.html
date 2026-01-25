@@ -1,0 +1,6 @@
+<div class="card" (click)="store.viewTask(task().id)">
+    <h3 class="title">{{ task().title }}</h3>
+    <p class="subtasks">
+        {{ completedSubtasks() }} of {{ totalSubtasks() }} subtasks
+    </p>
+</div>

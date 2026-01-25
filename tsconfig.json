@@ -9,11 +9,13 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "ES2022",
-    "module": "preserve"
+    "module": "preserve",
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

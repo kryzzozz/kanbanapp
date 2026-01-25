@@ -1,0 +1,18 @@
+:host { 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+}
+.badge { 
+    width: 15px; 
+    height: 15px; 
+    border-radius: 50%; 
+    display: block; 
+}
+.label { 
+    color: var(--medium-grey); 
+    font-size: 12px; 
+    font-weight: bold; 
+    letter-spacing: 2.4px; 
+    text-transform: uppercase; 
+}

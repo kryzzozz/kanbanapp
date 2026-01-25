@@ -1,0 +1,42 @@
+<div class="modal-overlay" (click)="store.closeViewTask()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+
+        @if (store.selectedTask(); as task) {
+        <div class="header">
+            <h2 class="title">{{ task.title }}</h2>
+        </div>
+
+        <p class="description">
+            {{ task.description || 'No description provided.' }}
+        </p>
+
+        <div class="subtasks-section">
+            <label class="section-label">
+                Subtasks ({{ completedCount() }} of {{ task.subtasks.length }})
+            </label>
+
+            <div class="subtasks-list">
+                @for (subtask of task.subtasks; track $index) {
+                <div class="subtask-item">
+                    <input type="checkbox" [checked]="subtask.isCompleted"
+                        (change)="store.toggleSubtask(task.id, $index)" class="checkbox">
+
+                    <span class="subtask-text" [appCompletedSubtask]="subtask.isCompleted">
+                        {{ subtask.title }}
+                    </span>
+                </div>
+                }
+            </div>
+        </div>
+
+        <div class="status-section">
+            <label class="section-label">Current Status</label>
+            <select [ngModel]="task.status" (ngModelChange)="store.updateTaskStatus(task.id, $event)">
+                @for (col of store.currentBoard()?.columns; track col.name) {
+                <option [value]="col.name">{{ col.name }}</option>
+                }
+            </select>
+        </div>
+        }
+    </div>
+</div>

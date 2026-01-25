@@ -1,0 +1,20 @@
+<header class="app-header">
+    <div class="logo-container">
+        <svg width="152" height="25" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" fill-rule="evenodd">
+                <rect width="6" height="25" rx="2" fill="#635FC7" />
+                <rect opacity=".75" x="9" width="6" height="25" rx="2" fill="#635FC7" />
+                <rect opacity=".5" x="18" width="6" height="25" rx="2" fill="#635FC7" />
+            </g>
+        </svg>
+        <span class="logo-text">kanban</span>
+    </div>
+
+    <div class="header-content">
+        <h1 class="board-name">{{ boardName() }}</h1>
+
+        <div class="actions">
+            <button class="add-btn" (click)="store.openTaskModal()">+ Add New Task</button>
+        </div>
+    </div>
+</header>

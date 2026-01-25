@@ -1,0 +1,30 @@
+<div class="board-container">
+    @if (store.currentBoard(); as board) {
+
+    <div class="columns-wrapper" cdkDropListGroup>
+        @for (column of board.columns; track column.name) {
+
+        <div class="column">
+            <div class="column-header">
+                <app-status-badge [label]="column.name"></app-status-badge>
+                <span class="task-count">({{ column.tasks.length }})</span>
+            </div>
+
+            <div class="task-list" cdkDropList [id]="column.name" [cdkDropListData]="column.tasks"
+                (cdkDropListDropped)="onDrop($event)">
+
+                @for (task of column.tasks; track task.id) {
+                <div class="task-wrapper" cdkDrag [cdkDragData]="task">
+                    <app-task-card [task]="task"></app-task-card>
+
+                    <div *cdkDragPlaceholder class="custom-placeholder"></div>
+                </div>
+                }
+            </div>
+        </div>
+
+        }
+    </div>
+
+    }
+</div>
