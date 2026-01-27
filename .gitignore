@@ -1,44 +1,46 @@
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
-# Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
-
-# Node
-/node_modules
-npm-debug.log
-yarn-error.log
-
-# IDEs and editors
+# --- GENERAL & OS ---
+.DS_Store
+Thumbs.db
 .idea/
 .project
 .classpath
-.c9/
-*.launch
 .settings/
 *.sublime-workspace
 
-# Visual Studio Code
+# --- NODEJS / ANGULAR (Frontend) ---
+# Quitamos la barra '/' inicial para que aplique dentro de /frontend/
+node_modules/
+dist/
+tmp/
+out-tsc/
+bazel-out/
+
+# Angular cache & logs
+.angular/
+npm-debug.log
+yarn-error.log
+testem.log
+connect.lock
+coverage/
+typings/
+__screenshots__/
+
+# --- .NET / C# (Backend) ---
+# Importante para que no subas los binarios compilados
+bin/
+obj/
+*.user
+*.pdb
+*.suo
+.vs/
+
+# --- VISUAL STUDIO CODE ---
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
 !.vscode/mcp.json
-.history/*
-
-# Miscellaneous
-/.angular/cache
-.sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
-testem.log
-/typings
-__screenshots__/
-
-# System files
-.DS_Store
-Thumbs.db
+.history/
