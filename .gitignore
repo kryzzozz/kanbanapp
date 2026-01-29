@@ -44,3 +44,8 @@ obj/
 !.vscode/extensions.json
 !.vscode/mcp.json
 .history/
+
+# Ignore dotnet build folders
+**/bin/
+**/obj/
+**/publish/

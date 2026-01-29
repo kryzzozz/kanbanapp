@@ -110,3 +110,18 @@ input:checked+.slider:before {
 .icon {
     fill: currentColor;
 }
+
+.sidebar {
+    overflow-y: hidden; 
+}
+
+.boards-list {
+    flex: 1; 
+    overflow-y: auto;
+    min-height: 0;
+    padding-bottom: 20px;
+}
+
+.sidebar-footer {
+    padding-top: 10px;
+}
