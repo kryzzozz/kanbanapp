@@ -1,44 +1,60 @@
+using KanbanApi.Settings; // Importante: usar tus Settings
+using Microsoft.Extensions.Options; // Importante: para leer opciones
+using MongoDB.Driver; // Importante: el driver oficial
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// --- 1. CONFIGURACIÓN DE MONGODB ---
+// Leemos la sección del appsettings.json y la mapeamos a la clase
+builder.Services.Configure<MongoDbSettings>(
+builder.Configuration.GetSection("MongoDbSettings"));
+
+// Registramos el Cliente de MongoDB como un "Singleton" (una sola instancia para toda la app)
+builder.Services.AddSingleton<IMongoClient>(sp =>
+{
+    var settings = sp.GetRequiredService<IOptions<MongoDbSettings>>().Value;
+    return new MongoClient(settings.ConnectionString);
+});
+
+// Registramos la Base de Datos específica para inyectarla directo
+builder.Services.AddScoped<IMongoDatabase>(sp =>
+{
+    var settings = sp.GetRequiredService<IOptions<MongoDbSettings>>().Value;
+    var client = sp.GetRequiredService<IMongoClient>();
+    return client.GetDatabase(settings.DatabaseName);
+});
+
+// REGISTRAR NUESTROS SERVICIOS
+builder.Services.AddScoped<KanbanApi.Services.BoardService>();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddControllers();
+
+// 1. DEFINIR LA POLÍTICA CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngular", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200") // La URL de tu Angular
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+// 2. ACTIVAR LA POLÍTICA
+app.UseCors("AllowAngular");
+
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+app.MapControllers();
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
