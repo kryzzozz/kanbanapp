@@ -15,12 +15,10 @@ public class BoardsController : ControllerBase
         _boardService = boardService;
     }
 
-    // GET: api/boards
     [HttpGet]
     public async Task<List<Board>> Get() =>
         await _boardService.GetAsync();
 
-    // GET: api/boards/{id}
     [HttpGet("{id:length(24)}")]
     public async Task<ActionResult<Board>> Get(string id)
     {
@@ -34,7 +32,6 @@ public class BoardsController : ControllerBase
         return board;
     }
 
-    // POST: api/boards
     [HttpPost]
     public async Task<IActionResult> Post(Board newBoard)
     {
@@ -43,7 +40,6 @@ public class BoardsController : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = newBoard.Id }, newBoard);
     }
 
-    // PUT: api/boards/{id}
     [HttpPut("{id:length(24)}")]
     public async Task<IActionResult> Update(string id, Board updatedBoard)
     {
@@ -61,7 +57,6 @@ public class BoardsController : ControllerBase
         return NoContent();
     }
 
-    // DELETE: api/boards/{id}
     [HttpDelete("{id:length(24)}")]
     public async Task<IActionResult> Delete(string id)
     {

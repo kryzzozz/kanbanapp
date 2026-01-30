@@ -211,7 +211,6 @@ export const BoardStore = signalStore(
             return col;
         });
   
-        // 2. Agregar a la columna nueva
         if (taskToMove) {
             currentColumns = currentColumns.map(col => {
                 if (col.name === newStatus) {

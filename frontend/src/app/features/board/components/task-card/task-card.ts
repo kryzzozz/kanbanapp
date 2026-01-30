@@ -2,7 +2,7 @@
 import { Component, input, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Task } from '../../../../core/models/board.model';
-import { BoardStore } from '../../store/board.store'; // + Import Store
+import { BoardStore } from '../../store/board.store';
 
 @Component({
   selector: 'app-task-card',

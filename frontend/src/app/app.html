@@ -1,1 +1,15 @@
+@if (store.loading() && store.boards().length === 0) {
+  <div class="cold-start-overlay">
+    <div class="spinner"></div>
+    
+    <div class="loader-content">
+      <h3>Waking up the server... 🚀</h3>
+      <p>
+        Since this is a demo running on <strong>Azure Free Tier</strong>, 
+        the server sleeps when inactive. Please wait ~30 seconds while it boots up.
+      </p>
+    </div>
+  </div>
+}
+
 <router-outlet></router-outlet>
